@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\11\\source\\repos\\NorthWindOLTP\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{257EEAAA-86E5-4D1D-8ECF-780B890D166E}|NorthWindOLTP.sqlproj|C:\\Users\\11\\source\\repos\\NorthWindOLTP\\Scripts\\Employees.data.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{257EEAAA-86E5-4D1D-8ECF-780B890D166E}|NorthWindOLTP.sqlproj|solutionrelative:Scripts\\Employees.data.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{257EEAAA-86E5-4D1D-8ECF-780B890D166E}|NorthWindOLTP.sqlproj|C:\\Users\\11\\source\\repos\\NorthWindOLTP\\Scripts\\Employees.data.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{257EEAAA-86E5-4D1D-8ECF-780B890D166E}|NorthWindOLTP.sqlproj|solutionrelative:Scripts\\Employees.data.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Employees.data.sql ",
+              "DocumentMoniker": "C:\\Users\\11\\source\\repos\\NorthWindOLTP\\Scripts\\Employees.data.sql",
+              "RelativeDocumentMoniker": "Scripts\\Employees.data.sql",
+              "ToolTip": "C:\\Users\\11\\source\\repos\\NorthWindOLTP\\Scripts\\Employees.data.sql\r\n(SKYNET\\Kevin)",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-10-12T06:15:17.226Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
