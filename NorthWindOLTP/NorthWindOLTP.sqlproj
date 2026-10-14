@@ -78,20 +78,20 @@
     <Build Include="Stored Procedures\GetCustomerChangesByRowVersion.sql" />
     <Build Include="Stored Procedures\GetEmployeeChangesByRowVersion.sql" />
     <Build Include="Stored Procedures\GetProductChangesByRowVersion.sql" />
-    <Build Include="Scripts\Territories.data.sql" />
-    <Build Include="Scripts\Suppliers.data.sql" />
-    <Build Include="Scripts\Shippers.data.sql" />
-    <Build Include="Scripts\Region.data.sql" />
-    <Build Include="Scripts\Products.data.sql" />
-    <Build Include="Scripts\Orders.data.sql" />
-    <Build Include="Scripts\Employees.data.sql" />
-    <Build Include="Scripts\EmployeeTerritories.data.sql" />
-    <Build Include="Scripts\OrderDetails.data.sql" />
+    <None Include="Scripts\Territories.data.sql" />
+    <None Include="Scripts\Suppliers.data.sql" />
+    <None Include="Scripts\Shippers.data.sql" />
+    <None Include="Scripts\Region.data.sql" />
+    <None Include="Scripts\Products.data.sql" />
+    <None Include="Scripts\Orders.data.sql" />
+    <None Include="Scripts\Employees.data.sql" />
+    <None Include="Scripts\EmployeeTerritories.data.sql" />
+    <None Include="Scripts\OrderDetails.data.sql" />
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="Scripts\Categories.data.sql" />
+    <None Include="Scripts\Categories.data.sql" />
     <None Include="Scripts\Customers.data.sql" />
-    <None Include="Scripts\Script.PostDeployment.sql" />
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Clean.data.sql" />
