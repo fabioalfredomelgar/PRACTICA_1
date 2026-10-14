@@ -1,8 +1,8 @@
-﻿DELETE FROM [dbo].[OrderDetails];
+DELETE FROM [dbo].[Products];
+DELETE FROM [dbo].[OrderDetails];
 DELETE FROM [dbo].[EmployeeTerritories];
 DELETE FROM [dbo].[CustomerCustomerDemo];
 DELETE FROM [dbo].[Orders];
-DELETE FROM [dbo].[Products];
 DELETE FROM [dbo].[Territories];
 DELETE FROM [dbo].[Employees];
 DELETE FROM [dbo].[CustomerDemographics];
