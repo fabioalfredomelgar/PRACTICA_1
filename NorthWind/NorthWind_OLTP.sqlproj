@@ -60,6 +60,10 @@
     <Folder Include="NorthWind_OLTP\Scripts" />
     <Folder Include="NorthWind_OLTP\Stored Procedures" />
     <Folder Include="NorthWind_OLTP\Tables" />
+    <Folder Include="NorthWind_DW" />
+    <Folder Include="NorthWind_DW\Scripts" />
+    <Folder Include="NorthWind_DW\Tables" />
+    <Folder Include="NorthWind_DW\Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NORTHWIND_OLTP\Scripts\Categories.data.sql" />
@@ -94,5 +98,12 @@
     <Build Include="NORTHWIND_OLTP\Tables\Shippers.sql" />
     <Build Include="NORTHWIND_OLTP\Tables\Suppliers.sql" />
     <Build Include="NORTHWIND_OLTP\Tables\Territories.sql" />
+    <Build Include="NorthWind_DW\Tables\Dim.Customer.sql" />
+    <Build Include="NorthWind_DW\Tables\Dim.Date.sql" />
+    <Build Include="NorthWind_DW\Tables\Dim.Employee.sql" />
+    <Build Include="NorthWind_DW\Tables\Dim.Product.sql" />
+    <Build Include="NorthWind_DW\Tables\DimShipLocation.sql" />
+    <Build Include="NorthWind_DW\Tables\DimShipper.sql" />
+    <Build Include="NorthWind_DW\Tables\FactSales.sql" />
   </ItemGroup>
 </Project>
