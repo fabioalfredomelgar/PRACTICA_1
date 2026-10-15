@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[DimFactSales]
+(
+	[Id] INT NOT NULL PRIMARY KEY
+)

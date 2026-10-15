@@ -1,4 +1,4 @@
-PRINT 'Populating Employees Territories table';
+﻿PRINT 'Populating Employees Territories table';
 SET NOCOUNT ON;
 INSERT [dbo].[EmployeeTerritories] ([EmployeeID], [TerritoryID]) VALUES (1, N'06897')
 INSERT [dbo].[EmployeeTerritories] ([EmployeeID], [TerritoryID]) VALUES (1, N'19713')
@@ -49,5 +49,3 @@ INSERT [dbo].[EmployeeTerritories] ([EmployeeID], [TerritoryID]) VALUES (9, N'48
 INSERT [dbo].[EmployeeTerritories] ([EmployeeID], [TerritoryID]) VALUES (9, N'48304')
 INSERT [dbo].[EmployeeTerritories] ([EmployeeID], [TerritoryID]) VALUES (9, N'55113')
 INSERT [dbo].[EmployeeTerritories] ([EmployeeID], [TerritoryID]) VALUES (9, N'55439')
-
-

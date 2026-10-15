@@ -1,4 +1,4 @@
-DELETE FROM [dbo].[Products];
+﻿DELETE FROM [dbo].[Products];
 DELETE FROM [dbo].[OrderDetails];
 DELETE FROM [dbo].[EmployeeTerritories];
 DELETE FROM [dbo].[CustomerCustomerDemo];

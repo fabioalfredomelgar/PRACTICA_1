@@ -1,4 +1,4 @@
-PRINT 'Populating Suppliers table';
+﻿PRINT 'Populating Suppliers table';
 SET NOCOUNT ON;
 SET IDENTITY_INSERT [dbo].[Suppliers] ON;
 INSERT [dbo].[Suppliers] ([SupplierID], [CompanyName], [ContactName], [ContactTitle], [Address], [City], [Region], [PostalCode], [Country], [Phone], [Fax], [HomePage]) VALUES (1, N'Exotic Liquids', N'Charlotte Cooper', N'Purchasing Manager', N'49 Gilbert St.', N'London', NULL, N'EC1 4SD', N'UK', N'(171) 555-2222', NULL, NULL)

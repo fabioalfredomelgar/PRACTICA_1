@@ -1,4 +1,4 @@
-PRINT 'Populating Territories table';
+﻿PRINT 'Populating Territories table';
 SET NOCOUNT ON;
 INSERT [dbo].[Territories] ([TerritoryID], [TerritoryDescription], [RegionID]) VALUES (N'01581', N'Westboro                                          ', 1)
 INSERT [dbo].[Territories] ([TerritoryID], [TerritoryDescription], [RegionID]) VALUES (N'01730', N'Bedford                                           ', 1)

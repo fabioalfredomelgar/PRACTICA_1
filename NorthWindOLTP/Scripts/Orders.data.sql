@@ -1,4 +1,4 @@
-PRINT 'Populating Orders table';
+﻿PRINT 'Populating Orders table';
 SET NOCOUNT ON;
 SET IDENTITY_INSERT [dbo].[Orders] ON 
 INSERT [dbo].[Orders] ([OrderID], [CustomerID], [EmployeeID], [OrderDate], [RequiredDate], [ShippedDate], [ShipVia], [Freight], [ShipName], [ShipAddress], [ShipCity], [ShipRegion], [ShipPostalCode], [ShipCountry]) VALUES (10248, N'VINET', 5, CAST(N'1996-07-04T00:00:00.000' AS DateTime), CAST(N'1996-08-01T00:00:00.000' AS DateTime), CAST(N'1996-07-16T00:00:00.000' AS DateTime), 3, 32.3800, N'Vins et alcools Chevalier', N'59 rue de l''Abbaye', N'Reims', NULL, N'51100', N'France')
@@ -832,3 +832,5 @@ INSERT [dbo].[Orders] ([OrderID], [CustomerID], [EmployeeID], [OrderDate], [Requ
 INSERT [dbo].[Orders] ([OrderID], [CustomerID], [EmployeeID], [OrderDate], [RequiredDate], [ShippedDate], [ShipVia], [Freight], [ShipName], [ShipAddress], [ShipCity], [ShipRegion], [ShipPostalCode], [ShipCountry]) VALUES (11076, N'BONAP', 4, CAST(N'1998-05-06T00:00:00.000' AS DateTime), CAST(N'1998-06-03T00:00:00.000' AS DateTime), NULL, 2, 38.2800, N'Bon app''', N'12, rue des Bouchers', N'Marseille', NULL, N'13008', N'France')
 INSERT [dbo].[Orders] ([OrderID], [CustomerID], [EmployeeID], [OrderDate], [RequiredDate], [ShippedDate], [ShipVia], [Freight], [ShipName], [ShipAddress], [ShipCity], [ShipRegion], [ShipPostalCode], [ShipCountry]) VALUES (11077, N'RATTC', 1, CAST(N'1998-05-06T00:00:00.000' AS DateTime), CAST(N'1998-06-03T00:00:00.000' AS DateTime), NULL, 2, 8.5300, N'Rattlesnake Canyon Grocery', N'2817 Milton Dr.', N'Albuquerque', N'NM', N'87110', N'USA')
 SET IDENTITY_INSERT [dbo].[Orders] OFF
+
+

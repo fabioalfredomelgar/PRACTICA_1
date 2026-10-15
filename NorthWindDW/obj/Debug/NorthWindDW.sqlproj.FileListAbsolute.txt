@@ -1,0 +1,6 @@
+C:\Users\KIMBERLY\source\repos\NorthWindDW\bin\Debug\NorthWindDW.dacpac
+C:\Users\KIMBERLY\source\repos\NorthWindDW\obj\Debug\NorthWindDW.sqlproj.AssemblyReference.cache
+C:\Users\KIMBERLY\source\repos\NorthWindDW\obj\Debug\NorthWindDW.dll
+C:\Users\KIMBERLY\source\repos\NorthWindDW\obj\Debug\NorthWindDW.pdb
+C:\Users\KIMBERLY\source\repos\NorthWindDW\bin\Debug\NorthWindDW.dll
+C:\Users\KIMBERLY\source\repos\NorthWindDW\bin\Debug\NorthWindDW.pdb
