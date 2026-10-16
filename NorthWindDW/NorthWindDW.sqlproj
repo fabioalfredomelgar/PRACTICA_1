@@ -81,5 +81,7 @@
     <Build Include="Stored Procedures\DW_MergedDimShipLocation.sql" />
     <Build Include="Stored Procedures\DW_MergedDimShipper.sql" />
     <Build Include="Stored Procedures\DW_MergedSales.sql" />
+    <Build Include="Stored Procedures\GetLastPackageRowVersion.sql" />
+    <Build Include="Stored Procedures\UpdateLastPackageRowVersion.sql" />
   </ItemGroup>
 </Project>

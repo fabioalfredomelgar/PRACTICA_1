@@ -1,0 +1,87 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\KIMBERLY\\source\\repos\\NorthWindDW\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{873CFCB3-2430-481B-A4CB-44DDFDAC13C3}|NorthWindDW.sqlproj|C:\\Users\\KIMBERLY\\source\\repos\\NorthWindDW\\Stored Procedures\\UpdateLastPackageRowVersion.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{873CFCB3-2430-481B-A4CB-44DDFDAC13C3}|NorthWindDW.sqlproj|solutionrelative:Stored Procedures\\UpdateLastPackageRowVersion.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{873CFCB3-2430-481B-A4CB-44DDFDAC13C3}|NorthWindDW.sqlproj|C:\\Users\\KIMBERLY\\source\\repos\\NorthWindDW\\Stored Procedures\\GetLastPackageRowVersion.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{873CFCB3-2430-481B-A4CB-44DDFDAC13C3}|NorthWindDW.sqlproj|solutionrelative:Stored Procedures\\GetLastPackageRowVersion.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KIMBERLY\\source\\repos\\NorthWindDW\\bin\\Debug\\NorthWindDW.publish.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:bin\\Debug\\NorthWindDW.publish.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\KIMBERLY\\source\\repos\\NorthWindDW\\bin\\Debug\\NorthWindDW.publish.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:bin\\Debug\\NorthWindDW.publish.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{873CFCB3-2430-481B-A4CB-44DDFDAC13C3}|NorthWindDW.sqlproj|C:\\Users\\KIMBERLY\\source\\repos\\NorthWindDW\\Stored Procedures\\GetLastPackageRowVersion.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{873CFCB3-2430-481B-A4CB-44DDFDAC13C3}|NorthWindDW.sqlproj|solutionrelative:Stored Procedures\\GetLastPackageRowVersion.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{873CFCB3-2430-481B-A4CB-44DDFDAC13C3}|NorthWindDW.sqlproj|C:\\Users\\KIMBERLY\\source\\repos\\NorthWindDW\\Stored Procedures\\UpdateLastPackageRowVersion.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{873CFCB3-2430-481B-A4CB-44DDFDAC13C3}|NorthWindDW.sqlproj|solutionrelative:Stored Procedures\\UpdateLastPackageRowVersion.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{007a3a6b-b5b2-454d-a2bd-cf929f989be2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UpdateLastPackageRowVersion.sql",
+              "DocumentMoniker": "C:\\Users\\KIMBERLY\\source\\repos\\NorthWindDW\\Stored Procedures\\UpdateLastPackageRowVersion.sql",
+              "RelativeDocumentMoniker": "Stored Procedures\\UpdateLastPackageRowVersion.sql",
+              "ToolTip": "C:\\Users\\KIMBERLY\\source\\repos\\NorthWindDW\\Stored Procedures\\UpdateLastPackageRowVersion.sql",
+              "RelativeToolTip": "Stored Procedures\\UpdateLastPackageRowVersion.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-10-16T04:01:25.15Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GetLastPackageRowVersion.sql",
+              "DocumentMoniker": "C:\\Users\\KIMBERLY\\source\\repos\\NorthWindDW\\Stored Procedures\\GetLastPackageRowVersion.sql",
+              "RelativeDocumentMoniker": "Stored Procedures\\GetLastPackageRowVersion.sql",
+              "ToolTip": "C:\\Users\\KIMBERLY\\source\\repos\\NorthWindDW\\Stored Procedures\\GetLastPackageRowVersion.sql",
+              "RelativeToolTip": "Stored Procedures\\GetLastPackageRowVersion.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-10-16T04:00:27.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NorthWindDW.publish.sql ",
+              "DocumentMoniker": "C:\\Users\\KIMBERLY\\source\\repos\\NorthWindDW\\bin\\Debug\\NorthWindDW.publish.sql",
+              "RelativeDocumentMoniker": "bin\\Debug\\NorthWindDW.publish.sql",
+              "ToolTip": "NorthWindDW.publish.sql ",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-10-15T05:24:23.29Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
