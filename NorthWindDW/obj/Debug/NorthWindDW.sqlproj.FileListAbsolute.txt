@@ -4,7 +4,3 @@ C:\Users\KIMBERLY\source\repos\NorthWindDW\obj\Debug\NorthWindDW.dll
 C:\Users\KIMBERLY\source\repos\NorthWindDW\obj\Debug\NorthWindDW.pdb
 C:\Users\KIMBERLY\source\repos\NorthWindDW\bin\Debug\NorthWindDW.dll
 C:\Users\KIMBERLY\source\repos\NorthWindDW\bin\Debug\NorthWindDW.pdb
-C:\Users\KIMBERLY\source\repos\NorthWindDW\obj\Debug\Model.xml
-C:\Users\KIMBERLY\source\repos\NorthWindDW\obj\Debug\refactor.xml
-C:\Users\KIMBERLY\source\repos\NorthWindDW\obj\Debug\postdeploy.sql
-C:\Users\KIMBERLY\source\repos\NorthWindDW\obj\Debug\predeploy.sql
