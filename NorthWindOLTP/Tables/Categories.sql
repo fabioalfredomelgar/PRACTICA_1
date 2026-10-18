@@ -4,5 +4,5 @@
     [Description] [nvarchar](max) NULL,
     [Picture] [image] NULL,
     [rowversion] [timestamp] NULL,
-    CONSTRAINT [PK_Categories] PRIMARY KEY ([CategoryID] ASC)
+    CONSTRAINT [PK_Categories] PRIMARY KEY CLUSTERED ([CategoryID] ASC)
 );

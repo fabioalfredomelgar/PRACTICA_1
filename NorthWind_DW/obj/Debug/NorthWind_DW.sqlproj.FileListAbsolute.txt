@@ -1,0 +1,10 @@
+C:\Users\11\source\repos\NorthWind_DW\bin\Debug\NorthWind_DW.dacpac
+C:\Users\11\source\repos\NorthWind_DW\bin\Debug\NorthWind_DW.dll
+C:\Users\11\source\repos\NorthWind_DW\bin\Debug\NorthWind_DW.pdb
+C:\Users\11\source\repos\NorthWind_DW\obj\Debug\NorthWind_DW.sqlproj.AssemblyReference.cache
+C:\Users\11\source\repos\NorthWind_DW\obj\Debug\NorthWind_DW.dll
+C:\Users\11\source\repos\NorthWind_DW\obj\Debug\NorthWind_DW.pdb
+C:\Users\11\source\repos\NorthWind_DW\obj\Debug\Model.xml
+C:\Users\11\source\repos\NorthWind_DW\obj\Debug\refactor.xml
+C:\Users\11\source\repos\NorthWind_DW\obj\Debug\postdeploy.sql
+C:\Users\11\source\repos\NorthWind_DW\obj\Debug\predeploy.sql

@@ -12,7 +12,7 @@
 		</CustomData>
 		<CustomData Category="Reference" Type="Assembly">
 			<Metadata Name="LogicalName" Value="NorthWindOLTP.dll" />
-			<Metadata Name="FileName" Value="C:\USERS\KIMBERLY\SOURCE\REPOS\NORTHWINDOLTP\OBJ\DEBUG\NORTHWINDOLTP.DLL" />
+			<Metadata Name="FileName" Value="C:\USERS\11\SOURCE\REPOS\NORTHWINDOLTP\OBJ\DEBUG\NORTHWINDOLTP.DLL" />
 			<Metadata Name="AssemblyName" Value="NorthWindOLTP" />
 			<Metadata Name="PermissionSet" Value="SAFE" />
 			<Metadata Name="Owner" Value="" />
@@ -20,7 +20,7 @@
 			<Metadata Name="IsVisible" Value="True" />
 			<Metadata Name="IsModelAware" Value="True" />
 			<Metadata Name="SkipCreationIfEmpty" Value="True" />
-			<Metadata Name="AssemblySymbolsName" Value="C:\Users\KIMBERLY\source\repos\NorthWindOLTP\obj\Debug\NorthWindOLTP.pdb" />
+			<Metadata Name="AssemblySymbolsName" Value="C:\Users\11\source\repos\NorthWindOLTP\obj\Debug\NorthWindOLTP.pdb" />
 		</CustomData>
 		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
 	</Header>
@@ -1422,37 +1422,15 @@ BEGIN
         ,c.[Country]
         ,c.[Phone]
         ,c.[Fax]
-        ,c.[rowversion]
-        ,g.[CustomerDesc]
-    FROM
-        [dbo].[Customers] c
-        LEFT JOIN [dbo].[CustomerCustomerDemo] d ON c.CustomerID = d.CustomerID
-        LEFT JOIN [dbo].[CustomerDemographics] g ON g.CustomerTypeID = g.CustomerTypeID
-    WHERE
-        (c.[rowversion] > CONVERT(ROWVERSION, @startRow) AND c.[rowversion] <= CONVERT(ROWVERSION, @endRow))
-        OR (d.[rowversion] > CONVERT(ROWVERSION, @startRow) AND d.[rowversion] <= CONVERT(ROWVERSION, @endRow))
-        OR (g.[rowversion] > CONVERT(ROWVERSION, @startRow) AND g.[rowversion] <= CONVERT(ROWVERSION, @endRow))
+    FROM [dbo].[Customers] c
+    WHERE c.[rowversion] > CONVERT(ROWVERSION, @startRow)
+      AND c.[rowversion] <= CONVERT(ROWVERSION, @endRow)
 END]]></Value>
 			</Property>
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="BodyDependencies">
 				<Entry>
 					<References Name="[dbo].[Customers]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[CustomerCustomerDemo]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Customers].[CustomerID]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[CustomerCustomerDemo].[CustomerID]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[CustomerDemographics]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[CustomerDemographics].[CustomerTypeID]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[Customers].[CustomerID]" />
@@ -1491,9 +1469,6 @@ END]]></Value>
 					<References Name="[dbo].[Customers].[rowversion]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[CustomerDemographics].[CustomerDesc]" />
-				</Entry>
-				<Entry>
 					<References ExternalSource="BuiltIns" Name="[rowversion]" />
 				</Entry>
 				<Entry>
@@ -1504,24 +1479,6 @@ END]]></Value>
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[GetCustomerChangesByRowVersion].[@endRow]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[CustomerCustomerDemo].[rowversion]" />
-				</Entry>
-				<Entry>
-					<References ExternalSource="BuiltIns" Name="[rowversion]" />
-				</Entry>
-				<Entry>
-					<References ExternalSource="BuiltIns" Name="[rowversion]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[CustomerDemographics].[rowversion]" />
-				</Entry>
-				<Entry>
-					<References ExternalSource="BuiltIns" Name="[rowversion]" />
-				</Entry>
-				<Entry>
-					<References ExternalSource="BuiltIns" Name="[rowversion]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="Parameters">
@@ -1562,7 +1519,7 @@ END]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="981" />
+				<Property Name="Length" Value="520" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[GetCustomerChangesByRowVersion]&#xD;&#xA;(&#xD;&#xA;    @startRow BIGINT,&#xD;&#xA;    @endRow BIGINT&#xD;&#xA;)&#xD;&#xA;AS" />
@@ -1603,33 +1560,20 @@ BEGIN
     SELECT e.[EmployeeID]
         ,e.[LastName]
         ,e.[FirstName]
+        ,[FullName] = e.[FirstName] + N' ' + e.[LastName]
         ,e.[Title]
         ,e.[TitleOfCourtesy]
-        ,e.[BirthDate]
-        ,e.[HireDate]
-        ,e.[Address]
+        ,[BirthDate] = CONVERT(DATE, e.[BirthDate])
+        ,[HireDate] = CONVERT(DATE, e.[HireDate])
         ,e.[City]
         ,e.[Region]
-        ,e.[PostalCode]
         ,e.[Country]
-        ,e.[HomePhone]
-        ,e.[Extension]
-        ,e.[Photo]
-        ,e.[Notes]
         ,e.[ReportsTo]
-        ,e.[PhotoPath]
-        ,t.[TerritoryDescription]
-        ,r.[RegionDescription]
-    FROM
-        [dbo].[Employees] e
-        INNER JOIN [dbo].[EmployeeTerritories] et ON e.EmployeeID = et.EmployeeID
-        INNER JOIN [dbo].[Territories] t ON et.TerritoryID = t.TerritoryID
-        INNER JOIN [dbo].[Region] r ON t.RegionID = r.RegionID
-    WHERE
-        (e.[rowversion] > CONVERT(ROWVERSION, @startRow) AND e.[rowversion] <= CONVERT(ROWVERSION, @endRow))
-        OR (et.[rowversion] > CONVERT(ROWVERSION, @startRow) AND et.[rowversion] <= CONVERT(ROWVERSION, @endRow))
-        OR (t.[rowversion] > CONVERT(ROWVERSION, @startRow) AND t.[rowversion] <= CONVERT(ROWVERSION, @endRow))
-        OR (r.[rowversion] > CONVERT(ROWVERSION, @startRow) AND r.[rowversion] <= CONVERT(ROWVERSION, @endRow))
+        ,[SupervisorName] = s.[FirstName] + N' ' + s.[LastName]
+    FROM [dbo].[Employees] e
+        LEFT JOIN [dbo].[Employees] s ON e.[ReportsTo] = s.[EmployeeID]
+    WHERE (e.[rowversion] > CONVERT(ROWVERSION, @startRow) AND e.[rowversion] <= CONVERT(ROWVERSION, @endRow))
+       OR (s.[rowversion] > CONVERT(ROWVERSION, @startRow) AND s.[rowversion] <= CONVERT(ROWVERSION, @endRow))
 END]]></Value>
 			</Property>
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1638,31 +1582,10 @@ END]]></Value>
 					<References Name="[dbo].[Employees]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[EmployeeTerritories]" />
+					<References Name="[dbo].[Employees].[ReportsTo]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[Employees].[EmployeeID]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[EmployeeTerritories].[EmployeeID]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Territories]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[EmployeeTerritories].[TerritoryID]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Territories].[TerritoryID]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Region]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Territories].[RegionID]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Region].[RegionID]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[Employees].[EmployeeID]" />
@@ -1680,13 +1603,16 @@ END]]></Value>
 					<References Name="[dbo].[Employees].[TitleOfCourtesy]" />
 				</Entry>
 				<Entry>
+					<References ExternalSource="BuiltIns" Name="[date]" />
+				</Entry>
+				<Entry>
 					<References Name="[dbo].[Employees].[BirthDate]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[Employees].[HireDate]" />
+					<References ExternalSource="BuiltIns" Name="[date]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[Employees].[Address]" />
+					<References Name="[dbo].[Employees].[HireDate]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[Employees].[City]" />
@@ -1695,34 +1621,13 @@ END]]></Value>
 					<References Name="[dbo].[Employees].[Region]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[Employees].[PostalCode]" />
-				</Entry>
-				<Entry>
 					<References Name="[dbo].[Employees].[Country]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[Employees].[HomePhone]" />
+					<References Name="[dbo].[Employees].[FirstName]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[Employees].[Extension]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Employees].[Photo]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Employees].[Notes]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Employees].[ReportsTo]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Employees].[PhotoPath]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Territories].[TerritoryDescription]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Region].[RegionDescription]" />
+					<References Name="[dbo].[Employees].[LastName]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[Employees].[rowversion]" />
@@ -1740,25 +1645,7 @@ END]]></Value>
 					<References Name="[dbo].[GetEmployeeChangesByRowVersion].[@endRow]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[EmployeeTerritories].[rowversion]" />
-				</Entry>
-				<Entry>
-					<References ExternalSource="BuiltIns" Name="[rowversion]" />
-				</Entry>
-				<Entry>
-					<References ExternalSource="BuiltIns" Name="[rowversion]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Territories].[rowversion]" />
-				</Entry>
-				<Entry>
-					<References ExternalSource="BuiltIns" Name="[rowversion]" />
-				</Entry>
-				<Entry>
-					<References ExternalSource="BuiltIns" Name="[rowversion]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Region].[rowversion]" />
+					<References Name="[dbo].[Employees].[rowversion]" />
 				</Entry>
 				<Entry>
 					<References ExternalSource="BuiltIns" Name="[rowversion]" />
@@ -1805,10 +1692,188 @@ END]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="1327" />
+				<Property Name="Length" Value="885" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[GetEmployeeChangesByRowVersion]&#xD;&#xA;(&#xD;&#xA;    @startRow BIGINT,&#xD;&#xA;    @endRow BIGINT&#xD;&#xA;)&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[GetOrdersChangesByRowVersion]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+BEGIN
+    SELECT od.[OrderID]
+        ,od.[ProductID]
+        ,o.[CustomerID]
+        ,o.[EmployeeID]
+        ,o.[ShipVia]
+        ,[OrderDate]    = CONVERT(DATE, o.[OrderDate])
+        ,[RequiredDate] = CONVERT(DATE, o.[RequiredDate])
+        ,[ShippedDate]  = CONVERT(DATE, o.[ShippedDate])
+        ,[ShipCity]       = ISNULL(o.[ShipCity], N'Unknown')
+        ,[ShipRegion]     = ISNULL(o.[ShipRegion], N'Unknown')
+        ,[ShipCountry]    = ISNULL(o.[ShipCountry], N'Unknown')
+        ,[ShipPostalCode] = ISNULL(o.[ShipPostalCode], N'Unknown')
+        ,[UnitPrice] = CONVERT(DECIMAL(18,2), od.[UnitPrice])
+        ,od.[Quantity]
+        ,[Discount] = CONVERT(DECIMAL(5,4), od.[Discount])
+        ,[AllocatedFreight] = CONVERT(DECIMAL(18,2),
+            ISNULL(o.[Freight], 0) *
+            (od.[UnitPrice] * od.[Quantity] * (1 - od.[Discount])) /
+            NULLIF(SUM(od.[UnitPrice] * od.[Quantity] * (1 - od.[Discount]))
+                   OVER (PARTITION BY od.[OrderID]), 0))
+        ,[DaysToShip] = DATEDIFF(DAY, o.[OrderDate], o.[ShippedDate])
+        ,[DaysLate]   = DATEDIFF(DAY, o.[RequiredDate], o.[ShippedDate])
+    FROM [dbo].[OrderDetails] od
+        INNER JOIN [dbo].[Orders] o ON od.[OrderID] = o.[OrderID]
+    WHERE (od.[rowversion] > CONVERT(ROWVERSION, @startRow) AND od.[rowversion] <= CONVERT(ROWVERSION, @endRow))
+       OR (o.[rowversion]  > CONVERT(ROWVERSION, @startRow) AND o.[rowversion]  <= CONVERT(ROWVERSION, @endRow))
+END]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[OrderDetails]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[OrderDetails].[OrderID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[OrderID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[OrderDetails].[ProductID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[CustomerID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[EmployeeID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[ShipVia]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[date]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[OrderDate]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[date]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[RequiredDate]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[date]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[ShippedDate]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[ShipCity]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[ShipRegion]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[ShipCountry]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[ShipPostalCode]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[decimal]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[OrderDetails].[UnitPrice]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[OrderDetails].[Quantity]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[decimal]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[OrderDetails].[Discount]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[decimal]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[Freight]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[OrderDetails].[rowversion]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[rowversion]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[GetOrdersChangesByRowVersion].[@startRow]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[rowversion]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[GetOrdersChangesByRowVersion].[@endRow]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[rowversion]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[rowversion]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[rowversion]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[GetOrdersChangesByRowVersion].[@startRow]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[GetOrdersChangesByRowVersion].[@endRow]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="1591" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[GetOrdersChangesByRowVersion]&#xD;&#xA;(&#xD;&#xA;    @startRow BIGINT,&#xD;&#xA;    @endRow BIGINT&#xD;&#xA;)&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[GetProductChangesByRowVersion]">
@@ -1817,22 +1882,23 @@ END]]></Value>
 BEGIN
     SELECT p.[ProductID]
         ,p.[ProductName]
-        ,s.[CompanyName]
-        ,c.[CategoryName]
         ,p.[QuantityPerUnit]
-        ,p.[UnitPrice]
-        ,p.[UnitsInStock]
-        ,p.[UnitsOnOrder]
-        ,p.[ReorderLevel]
+        ,[CurrentListPrice] = CONVERT(DECIMAL(18,2), p.[UnitPrice])
         ,p.[Discontinued]
-    FROM
-        [dbo].[Products] p
-        INNER JOIN [dbo].[Categories] c ON p.CategoryID = c.CategoryID
-        INNER JOIN [dbo].[Suppliers] s ON p.SupplierID = s.SupplierID
-    WHERE
-        (p.[rowversion] > CONVERT(ROWVERSION, @startRow) AND p.[rowversion] <= CONVERT(ROWVERSION, @endRow))
-        OR (c.[rowversion] > CONVERT(ROWVERSION, @startRow) AND c.[rowversion] <= CONVERT(ROWVERSION, @endRow))
-        OR (s.[rowversion] > CONVERT(ROWVERSION, @startRow) AND s.[rowversion] <= CONVERT(ROWVERSION, @endRow))
+        ,p.[CategoryID]
+        ,c.[CategoryName]
+        ,[CategoryDescription] = c.[Description]
+        ,p.[SupplierID]
+        ,[SupplierCompanyName] = s.[CompanyName]
+        ,[SupplierContactName] = s.[ContactName]
+        ,[SupplierCity] = s.[City]
+        ,[SupplierCountry] = s.[Country]
+    FROM [dbo].[Products] p
+        LEFT JOIN [dbo].[Categories] c ON p.[CategoryID] = c.[CategoryID]
+        LEFT JOIN [dbo].[Suppliers] s ON p.[SupplierID] = s.[SupplierID]
+    WHERE (p.[rowversion] > CONVERT(ROWVERSION, @startRow) AND p.[rowversion] <= CONVERT(ROWVERSION, @endRow))
+       OR (c.[rowversion] > CONVERT(ROWVERSION, @startRow) AND c.[rowversion] <= CONVERT(ROWVERSION, @endRow))
+       OR (s.[rowversion] > CONVERT(ROWVERSION, @startRow) AND s.[rowversion] <= CONVERT(ROWVERSION, @endRow))
 END]]></Value>
 			</Property>
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1865,28 +1931,37 @@ END]]></Value>
 					<References Name="[dbo].[Products].[ProductName]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[Suppliers].[CompanyName]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Categories].[CategoryName]" />
-				</Entry>
-				<Entry>
 					<References Name="[dbo].[Products].[QuantityPerUnit]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[decimal]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[Products].[UnitPrice]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[Products].[UnitsInStock]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Products].[UnitsOnOrder]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Products].[ReorderLevel]" />
-				</Entry>
-				<Entry>
 					<References Name="[dbo].[Products].[Discontinued]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Products].[CategoryID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Categories].[CategoryName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Categories].[Description]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Suppliers].[CompanyName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Suppliers].[ContactName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Suppliers].[City]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Suppliers].[Country]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[Products].[rowversion]" />
@@ -1960,10 +2035,187 @@ END]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="914" />
+				<Property Name="Length" Value="1116" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[GetProductChangesByRowVersion]&#xD;&#xA;(&#xD;&#xA;    @startRow BIGINT,&#xD;&#xA;    @endRow BIGINT&#xD;&#xA;)&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[GetShipLocationChangesByRowVersion]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+BEGIN
+    SELECT DISTINCT
+         [ShipCity]       = ISNULL(o.[ShipCity], N'Unknown')
+        ,[ShipRegion]     = ISNULL(o.[ShipRegion], N'Unknown')
+        ,[ShipCountry]    = ISNULL(o.[ShipCountry], N'Unknown')
+        ,[ShipPostalCode] = ISNULL(o.[ShipPostalCode], N'Unknown')
+    FROM [dbo].[Orders] o
+    WHERE o.[rowversion] > CONVERT(ROWVERSION, @startRow)
+      AND o.[rowversion] <= CONVERT(ROWVERSION, @endRow)
+END]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[Orders]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[ShipCity]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[ShipRegion]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[ShipCountry]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[ShipPostalCode]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Orders].[rowversion]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[rowversion]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[GetShipLocationChangesByRowVersion].[@startRow]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[rowversion]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[GetShipLocationChangesByRowVersion].[@endRow]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[GetShipLocationChangesByRowVersion].[@startRow]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[GetShipLocationChangesByRowVersion].[@endRow]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="548" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[GetShipLocationChangesByRowVersion]&#xD;&#xA;(&#xD;&#xA;    @startRow BIGINT,&#xD;&#xA;    @endRow BIGINT&#xD;&#xA;)&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[GetShipperChangesByRowVersion]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+BEGIN
+    SELECT sh.[ShipperID]
+        ,sh.[CompanyName]
+        ,sh.[Phone]
+    FROM [dbo].[Shippers] sh
+    WHERE sh.[rowversion] > CONVERT(ROWVERSION, @startRow)
+      AND sh.[rowversion] <= CONVERT(ROWVERSION, @endRow)
+END]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[Shippers]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Shippers].[ShipperID]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Shippers].[CompanyName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Shippers].[Phone]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Shippers].[rowversion]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[rowversion]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[GetShipperChangesByRowVersion].[@startRow]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[rowversion]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[GetShipperChangesByRowVersion].[@endRow]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[GetShipperChangesByRowVersion].[@startRow]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[GetShipperChangesByRowVersion].[@endRow]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bigint]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="343" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[GetShipperChangesByRowVersion]&#xD;&#xA;(&#xD;&#xA;    @startRow BIGINT,&#xD;&#xA;    @endRow BIGINT&#xD;&#xA;)&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[OrderDetails]">

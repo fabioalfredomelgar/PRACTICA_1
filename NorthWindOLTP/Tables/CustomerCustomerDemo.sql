@@ -14,4 +14,3 @@
         FOREIGN KEY ([CustomerID])
         REFERENCES [dbo].[Customers] ([CustomerID])
 )
-

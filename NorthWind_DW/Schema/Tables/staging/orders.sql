@@ -1,0 +1,21 @@
+﻿CREATE TABLE [staging].[orders](
+    [OrderID] [int] NOT NULL,
+    [ProductID] [int] NOT NULL,
+    [CustomerID] [nchar](5) NULL,
+    [EmployeeID] [int] NULL,
+    [ShipVia] [int] NULL,
+    [OrderDate] [date] NULL,
+    [RequiredDate] [date] NULL,
+    [ShippedDate] [date] NULL,
+    [ShipCity] [nvarchar](15) NOT NULL,
+    [ShipRegion] [nvarchar](15) NOT NULL,
+    [ShipCountry] [nvarchar](15) NOT NULL,
+    [ShipPostalCode] [nvarchar](10) NOT NULL,
+    [UnitPrice] [decimal](18, 2) NOT NULL,
+    [Quantity] [smallint] NOT NULL,
+    [Discount] [decimal](5, 4) NOT NULL,
+    [AllocatedFreight] [decimal](18, 2) NOT NULL,
+    [DaysToShip] [int] NULL,
+    [DaysLate] [int] NULL,
+    CONSTRAINT [PK_staging_orders] PRIMARY KEY CLUSTERED ([OrderID] ASC, [ProductID] ASC)
+);

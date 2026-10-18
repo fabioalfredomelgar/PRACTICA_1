@@ -9,9 +9,8 @@
        Ninguno
 
 ** Acciones del usuario
-     Quitar
-       [dbo].[FK_Employees_Employees] (Clave externa)
-     Crear
-       [dbo].[FK_Employees_Employees] (Clave externa)
 
 ** Acciones de compatibilidad
+
+Las bases de datos del proyecto y de destino tienen una configuración de intercalación diferente. Se pueden producir errores de implementación.
+

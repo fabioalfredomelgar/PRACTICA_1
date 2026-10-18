@@ -1,4 +1,4 @@
-﻿PRINT 'Populating Products table';
+PRINT 'Populating Products table';
 SET NOCOUNT ON;
 SET IDENTITY_INSERT [dbo].[Products] ON 
 INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [QuantityPerUnit], [UnitPrice], [UnitsInStock], [UnitsOnOrder], [ReorderLevel], [Discontinued]) VALUES (1, N'Chai', 1, 1, N'10 boxes x 20 bags', 18.0000, 39, 0, 10, 0)

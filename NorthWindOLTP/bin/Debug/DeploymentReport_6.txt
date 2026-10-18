@@ -1,0 +1,64 @@
+﻿** Aspectos destacados
+     Tablas que se volverán a crear con los datos migrados
+       Ninguno
+     Índices clúster que se van a quitar
+       Ninguno
+     Índices clúster que se van a crear
+       Ninguno
+     Posibles incidencias de datos
+       Ninguno
+
+** Acciones del usuario
+     Crear
+       [dbo].[Categories] (Tabla)
+       [dbo].[CustomerCustomerDemo] (Tabla)
+       [dbo].[CustomerDemographics] (Tabla)
+       [dbo].[Customers] (Tabla)
+       [dbo].[Employees] (Tabla)
+       [dbo].[EmployeeTerritories] (Tabla)
+       [dbo].[OrderDetails] (Tabla)
+       [dbo].[Orders] (Tabla)
+       [dbo].[Products] (Tabla)
+       [dbo].[Region] (Tabla)
+       [dbo].[Shippers] (Tabla)
+       [dbo].[Suppliers] (Tabla)
+       [dbo].[Territories] (Tabla)
+       [dbo].[DF_Order_Details_UnitPrice] (Restricción DEFAULT)
+       [dbo].[DF_Order_Details_Quantity] (Restricción DEFAULT)
+       [dbo].[DF_Order_Details_Discount] (Restricción DEFAULT)
+       [dbo].[DF_Orders_Freight] (Restricción DEFAULT)
+       [dbo].[DF_Products_UnitPrice] (Restricción DEFAULT)
+       [dbo].[DF_Products_UnitsInStock] (Restricción DEFAULT)
+       [dbo].[DF_Products_UnitsOnOrder] (Restricción DEFAULT)
+       [dbo].[DF_Products_ReorderLevel] (Restricción DEFAULT)
+       [dbo].[DF_Products_Discontinued] (Restricción DEFAULT)
+       [dbo].[FK_CustomerCustomerDemo] (Clave externa)
+       [dbo].[FK_CustomerCustomerDemo_Customers] (Clave externa)
+       [dbo].[FK_Employees_Employees] (Clave externa)
+       [dbo].[FK_EmployeeTerritories_Employees] (Clave externa)
+       [dbo].[FK_EmployeeTerritories_Territories] (Clave externa)
+       [dbo].[FK_Order_Details_Orders] (Clave externa)
+       [dbo].[FK_Order_Details_Products] (Clave externa)
+       [dbo].[FK_Orders_Customers] (Clave externa)
+       [dbo].[FK_Orders_Employees] (Clave externa)
+       [dbo].[FK_Orders_Shippers] (Clave externa)
+       [dbo].[FK_Products_Categories] (Clave externa)
+       [dbo].[FK_Products_Suppliers] (Clave externa)
+       [dbo].[FK_Territories_Region] (Clave externa)
+       [dbo].[CK_Birthdate] (Restricción CHECK)
+       [dbo].[CK_Discount] (Restricción CHECK)
+       [dbo].[CK_Quantity] (Restricción CHECK)
+       [dbo].[CK_UnitPrice] (Restricción CHECK)
+       [dbo].[CK_Products_UnitPrice] (Restricción CHECK)
+       [dbo].[CK_ReorderLevel] (Restricción CHECK)
+       [dbo].[CK_UnitsInStock] (Restricción CHECK)
+       [dbo].[CK_UnitsOnOrder] (Restricción CHECK)
+       [dbo].[GetCustomerChangesByRowVersion] (Procedimiento)
+       [dbo].[GetDatabaseRowVersion] (Procedimiento)
+       [dbo].[GetEmployeeChangesByRowVersion] (Procedimiento)
+       [dbo].[GetProductChangesByRowVersion] (Procedimiento)
+
+** Acciones de compatibilidad
+
+Las bases de datos del proyecto y de destino tienen una configuración de intercalación diferente. Se pueden producir errores de implementación.
+

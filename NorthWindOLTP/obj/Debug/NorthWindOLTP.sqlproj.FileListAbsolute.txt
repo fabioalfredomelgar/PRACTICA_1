@@ -1,6 +1,10 @@
-C:\Users\KIMBERLY\source\repos\NorthWindOLTP\bin\Debug\NorthWindOLTP.dacpac
-C:\Users\KIMBERLY\source\repos\NorthWindOLTP\bin\Debug\NorthWindOLTP.dll
-C:\Users\KIMBERLY\source\repos\NorthWindOLTP\bin\Debug\NorthWindOLTP.pdb
-C:\Users\KIMBERLY\source\repos\NorthWindOLTP\obj\Debug\NorthWindOLTP.sqlproj.AssemblyReference.cache
-C:\Users\KIMBERLY\source\repos\NorthWindOLTP\obj\Debug\NorthWindOLTP.dll
-C:\Users\KIMBERLY\source\repos\NorthWindOLTP\obj\Debug\NorthWindOLTP.pdb
+C:\Users\11\source\repos\NorthWindOLTP\bin\Debug\NorthWindOLTP.dacpac
+C:\Users\11\source\repos\NorthWindOLTP\obj\Debug\NorthWindOLTP.sqlproj.AssemblyReference.cache
+C:\Users\11\source\repos\NorthWindOLTP\obj\Debug\NorthWindOLTP.dll
+C:\Users\11\source\repos\NorthWindOLTP\obj\Debug\NorthWindOLTP.pdb
+C:\Users\11\source\repos\NorthWindOLTP\bin\Debug\NorthWindOLTP.dll
+C:\Users\11\source\repos\NorthWindOLTP\bin\Debug\NorthWindOLTP.pdb
+C:\Users\11\source\repos\NorthWindOLTP\obj\Debug\Model.xml
+C:\Users\11\source\repos\NorthWindOLTP\obj\Debug\refactor.xml
+C:\Users\11\source\repos\NorthWindOLTP\obj\Debug\postdeploy.sql
+C:\Users\11\source\repos\NorthWindOLTP\obj\Debug\predeploy.sql

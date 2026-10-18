@@ -6,7 +6,7 @@
     <Name>NorthWindOLTP</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{19ee4d5a-8ca6-4e03-9ba8-5378f6ce06dd}</ProjectGuid>
+    <ProjectGuid>{257eeaaa-86e5-4d1d-8ecf-780b890d166e}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql170DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
@@ -56,47 +56,47 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="Scripts" />
-    <Folder Include="Stored Procedures" />
     <Folder Include="Tables" />
+    <Folder Include="Stored Procedures" />
+    <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Categories.sql" />
     <Build Include="Tables\CustomerCustomerDemo.sql" />
-    <Build Include="Tables\CustomerDemographics.sql" />
     <Build Include="Tables\Customers.sql" />
+    <Build Include="Tables\Suppliers.sql" />
+    <Build Include="Tables\Shippers.sql" />
+    <Build Include="Tables\Region.sql" />
+    <Build Include="Tables\CustomerDemographics.sql" />
     <Build Include="Tables\Employees.sql" />
+    <Build Include="Tables\Territories.sql" />
+    <Build Include="Tables\Products.sql" />
+    <Build Include="Tables\Orders.sql" />
     <Build Include="Tables\EmployeeTerritories.sql" />
     <Build Include="Tables\OrderDetails.sql" />
-    <Build Include="Tables\Orders.sql" />
-    <Build Include="Tables\Products.sql" />
-    <Build Include="Tables\Region.sql" />
-    <Build Include="Tables\Shippers.sql" />
-    <Build Include="Tables\Suppliers.sql" />
-    <Build Include="Tables\Territories.sql" />
-    <Build Include="Stored Procedures\GetCustomerChangesByRowVersion.sql" />
-    <Build Include="Stored Procedures\GetDatabaseRowVersion.sql" />
-    <Build Include="Stored Procedures\GetEmployeeChangesByRowVersion.sql" />
-    <Build Include="Stored Procedures\GetProductChangesByRowVersion.sql" />
-    <Build Include="Stored Procedures\GetDimShipLocationChangesByRowVersion.sql" />
-    <Build Include="Stored Procedures\GetDimShipperChangesByRowVersion.sql" />
-    <Build Include="Stored Procedures\GetSalesChangesByRowVersion.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Scripts\Categories.data.sql" />
-    <None Include="Scripts\Clean.data.sql" />
-    <None Include="Scripts\Customers.data.sql" />
+    <None Include="Scripts\Territories.data.sql" />
+    <None Include="Scripts\Suppliers.data.sql" />
+    <None Include="Scripts\Shippers.data.sql" />
+    <None Include="Scripts\Region.data.sql" />
+    <None Include="Scripts\Products.data.sql" />
+    <None Include="Scripts\Orders.data.sql" />
     <None Include="Scripts\Employees.data.sql" />
     <None Include="Scripts\EmployeeTerritories.data.sql" />
     <None Include="Scripts\OrderDetails.data.sql" />
-    <None Include="Scripts\Orders.data.sql" />
-    <None Include="Scripts\Products.data.sql" />
-    <None Include="Scripts\Region.data.sql" />
-    <None Include="Scripts\Shippers.data.sql" />
-    <None Include="Scripts\Suppliers.data.sql" />
-    <None Include="Scripts\Territories.data.sql" />
+    <Build Include="Stored Procedures\GetDatabaseRowVersion.sql" />
+    <Build Include="Stored Procedures\GetCustomerChangesByRowVersion.sql" />
+    <Build Include="Stored Procedures\GetEmployeeChangesByRowVersion.sql" />
+    <Build Include="Stored Procedures\GetProductChangesByRowVersion.sql" />
+    <Build Include="Stored Procedures\GetShipperChangesByRowVersion.sql" />
+    <Build Include="Stored Procedures\GetShipLocationChangesByRowVersion.sql" />
+    <Build Include="Stored Procedures\GetOrdersChangesByRowVersion.sql" />
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="Scripts\Script.PostDeyploment.sql" />
+    <None Include="Scripts\Categories.data.sql" />
+    <None Include="Scripts\Customers.data.sql" />
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Clean.data.sql" />
   </ItemGroup>
 </Project>

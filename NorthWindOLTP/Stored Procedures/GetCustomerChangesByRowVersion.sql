@@ -16,14 +16,7 @@ BEGIN
         ,c.[Country]
         ,c.[Phone]
         ,c.[Fax]
-        ,c.[rowversion]
-        ,g.[CustomerDesc]
-    FROM
-        [dbo].[Customers] c
-        LEFT JOIN [dbo].[CustomerCustomerDemo] d ON c.CustomerID = d.CustomerID
-        LEFT JOIN [dbo].[CustomerDemographics] g ON g.CustomerTypeID = g.CustomerTypeID
-    WHERE
-        (c.[rowversion] > CONVERT(ROWVERSION, @startRow) AND c.[rowversion] <= CONVERT(ROWVERSION, @endRow))
-        OR (d.[rowversion] > CONVERT(ROWVERSION, @startRow) AND d.[rowversion] <= CONVERT(ROWVERSION, @endRow))
-        OR (g.[rowversion] > CONVERT(ROWVERSION, @startRow) AND g.[rowversion] <= CONVERT(ROWVERSION, @endRow))
+    FROM [dbo].[Customers] c
+    WHERE c.[rowversion] > CONVERT(ROWVERSION, @startRow)
+      AND c.[rowversion] <= CONVERT(ROWVERSION, @endRow)
 END

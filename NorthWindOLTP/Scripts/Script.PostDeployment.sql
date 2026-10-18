@@ -1,3 +1,4 @@
+﻿
 :r .\Clean.data.sql
 :r .\Region.data.sql
 :r .\Categories.data.sql
