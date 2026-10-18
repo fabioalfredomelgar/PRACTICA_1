@@ -12,7 +12,7 @@
 		</CustomData>
 		<CustomData Category="Reference" Type="Assembly">
 			<Metadata Name="LogicalName" Value="NorthWindDW.dll" />
-			<Metadata Name="FileName" Value="C:\USERS\KIMBERLY\SOURCE\REPOS\NORTHWINDDW\OBJ\DEBUG\NORTHWINDDW.DLL" />
+			<Metadata Name="FileName" Value="D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NORTHWINDDW\OBJ\DEBUG\NORTHWINDDW.DLL" />
 			<Metadata Name="AssemblyName" Value="NorthWindDW" />
 			<Metadata Name="PermissionSet" Value="SAFE" />
 			<Metadata Name="Owner" Value="" />
@@ -20,7 +20,7 @@
 			<Metadata Name="IsVisible" Value="True" />
 			<Metadata Name="IsModelAware" Value="True" />
 			<Metadata Name="SkipCreationIfEmpty" Value="True" />
-			<Metadata Name="AssemblySymbolsName" Value="C:\Users\KIMBERLY\source\repos\NorthWindDW\obj\Debug\NorthWindDW.pdb" />
+			<Metadata Name="AssemblySymbolsName" Value="D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NorthWindDW\obj\Debug\NorthWindDW.pdb" />
 		</CustomData>
 		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
 	</Header>
@@ -43,25 +43,6 @@
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[DimFactSales].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[DimFactSales]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="3" />
 		</Element>
 		<Element Type="SqlCheckConstraint" Name="[dbo].[CK_FactSales_Discount]">
 			<Property Name="CheckExpressionScript">
@@ -558,8 +539,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="3" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[DimDate]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -802,8 +783,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[DimEmployee]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1060,35 +1041,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
-		</Element>
-		<Element Type="SqlTable" Name="[dbo].[DimFactSales]">
-			<Property Name="IsAnsiNullsOn" Value="True" />
-			<Relationship Name="Columns">
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[DimFactSales].[Id]">
-						<Property Name="IsNullable" Value="False" />
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-						<AttachedAnnotation Disambiguator="3" />
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="Schema">
-				<Entry>
-					<References ExternalSource="BuiltIns" Name="[dbo]" />
-				</Entry>
-			</Relationship>
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[DimProduct]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1350,8 +1304,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="10" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="11" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[DimShipLocation]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1468,8 +1422,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="11" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="12" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[DimShipper]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1567,8 +1521,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="14" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
 		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[DW_MergedDimCustomer]">
 			<Property Name="BodyScript">
@@ -2407,8 +2361,8 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_FactSales_Customer]">
 			<Relationship Name="Columns">
@@ -2703,7 +2657,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_DimCustomer]">
 			<Relationship Name="ColumnSpecifications">
@@ -2727,7 +2681,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="4" />
+			<AttachedAnnotation Disambiguator="3" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_DimDate]">
 			<Relationship Name="ColumnSpecifications">
@@ -2751,7 +2705,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="6" />
+			<AttachedAnnotation Disambiguator="5" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_DimEmployee]">
 			<Relationship Name="ColumnSpecifications">
@@ -2775,7 +2729,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="8" />
+			<AttachedAnnotation Disambiguator="7" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_DimProduct]">
 			<Relationship Name="ColumnSpecifications">
@@ -2799,7 +2753,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="10" />
+			<AttachedAnnotation Disambiguator="9" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_DimShipLocation]">
 			<Relationship Name="ColumnSpecifications">
@@ -2823,7 +2777,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="12" />
+			<AttachedAnnotation Disambiguator="11" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_DimShipper]">
 			<Relationship Name="ColumnSpecifications">
@@ -2847,7 +2801,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="14" />
+			<AttachedAnnotation Disambiguator="13" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_FactSales]">
 			<Relationship Name="ColumnSpecifications">
@@ -2871,7 +2825,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="16" />
+			<AttachedAnnotation Disambiguator="15" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_PackageConfig]">
 			<Relationship Name="ColumnSpecifications">
@@ -2895,7 +2849,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="18" />
+			<AttachedAnnotation Disambiguator="17" />
 		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[UpdateLastPackageRowVersion]">
 			<Property Name="BodyScript">
@@ -2991,7 +2945,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="5" />
+			<AttachedAnnotation Disambiguator="4" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[dbo].[UQ_DimDate_FullDate]">
 			<Relationship Name="ColumnSpecifications">
@@ -3015,7 +2969,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="7" />
+			<AttachedAnnotation Disambiguator="6" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[dbo].[UQ_DimEmployee_EmployeeID]">
 			<Relationship Name="ColumnSpecifications">
@@ -3039,7 +2993,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="9" />
+			<AttachedAnnotation Disambiguator="8" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[dbo].[UQ_DimProduct_ProductID]">
 			<Relationship Name="ColumnSpecifications">
@@ -3063,7 +3017,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="11" />
+			<AttachedAnnotation Disambiguator="10" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[dbo].[UQ_DimShipLocation]">
 			<Relationship Name="ColumnSpecifications">
@@ -3114,7 +3068,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="13" />
+			<AttachedAnnotation Disambiguator="12" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[dbo].[UQ_DimShipper_ShipperID]">
 			<Relationship Name="ColumnSpecifications">
@@ -3138,7 +3092,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="15" />
+			<AttachedAnnotation Disambiguator="14" />
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[dbo].[UQ_FactSales_Line]">
 			<Relationship Name="ColumnSpecifications">
@@ -3171,7 +3125,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="17" />
+			<AttachedAnnotation Disambiguator="16" />
 		</Element>
 		<Element Type="SqlSchema" Name="[staging]">
 			<Relationship Name="Authorizer">

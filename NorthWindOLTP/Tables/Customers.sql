@@ -11,5 +11,5 @@
     [Phone] [nvarchar](24) NULL,
     [Fax] [nvarchar](24) NULL,
     [rowversion] [timestamp] NULL,
-    CONSTRAINT [PK_Customers] PRIMARY KEY CLUSTERED ([CustomerID] ASC)
+    CONSTRAINT [PK_Customers] PRIMARY KEY ([CustomerID] ASC)
 );

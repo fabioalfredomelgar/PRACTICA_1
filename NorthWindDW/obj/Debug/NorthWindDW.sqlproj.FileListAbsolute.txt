@@ -4,3 +4,13 @@ C:\Users\KIMBERLY\source\repos\NorthWindDW\obj\Debug\NorthWindDW.dll
 C:\Users\KIMBERLY\source\repos\NorthWindDW\obj\Debug\NorthWindDW.pdb
 C:\Users\KIMBERLY\source\repos\NorthWindDW\bin\Debug\NorthWindDW.dll
 C:\Users\KIMBERLY\source\repos\NorthWindDW\bin\Debug\NorthWindDW.pdb
+D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NorthWindDW\bin\Debug\NorthWindDW.dacpac
+D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NorthWindDW\bin\Debug\NorthWindDW.dll
+D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NorthWindDW\bin\Debug\NorthWindDW.pdb
+D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NorthWindDW\obj\Debug\NorthWindDW.sqlproj.AssemblyReference.cache
+D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NorthWindDW\obj\Debug\Model.xml
+D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NorthWindDW\obj\Debug\refactor.xml
+D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NorthWindDW\obj\Debug\postdeploy.sql
+D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NorthWindDW\obj\Debug\predeploy.sql
+D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NorthWindDW\obj\Debug\NorthWindDW.dll
+D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NorthWindDW\obj\Debug\NorthWindDW.pdb

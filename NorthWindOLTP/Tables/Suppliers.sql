@@ -12,5 +12,5 @@
     [Fax] [nvarchar](24) NULL,
     [HomePage] [nvarchar](max) NULL,
     [rowversion] [timestamp] NULL,
-    CONSTRAINT [PK_Suppliers] PRIMARY KEY CLUSTERED ([SupplierID] ASC)
+    CONSTRAINT [PK_Suppliers] PRIMARY KEY ([SupplierID] ASC)
 );

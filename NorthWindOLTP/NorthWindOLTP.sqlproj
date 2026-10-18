@@ -78,6 +78,9 @@
     <Build Include="Stored Procedures\GetDatabaseRowVersion.sql" />
     <Build Include="Stored Procedures\GetEmployeeChangesByRowVersion.sql" />
     <Build Include="Stored Procedures\GetProductChangesByRowVersion.sql" />
+    <Build Include="Stored Procedures\GetDimShipLocationChangesByRowVersion.sql" />
+    <Build Include="Stored Procedures\GetDimShipperChangesByRowVersion.sql" />
+    <Build Include="Stored Procedures\GetSalesChangesByRowVersion.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Categories.data.sql" />
