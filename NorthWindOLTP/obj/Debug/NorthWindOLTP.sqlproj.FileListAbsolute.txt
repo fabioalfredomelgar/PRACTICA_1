@@ -8,3 +8,9 @@ C:\Users\11\source\repos\NorthWindOLTP\obj\Debug\Model.xml
 C:\Users\11\source\repos\NorthWindOLTP\obj\Debug\refactor.xml
 C:\Users\11\source\repos\NorthWindOLTP\obj\Debug\postdeploy.sql
 C:\Users\11\source\repos\NorthWindOLTP\obj\Debug\predeploy.sql
+D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NorthWindOLTP\bin\Debug\NorthWindOLTP.dacpac
+D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NorthWindOLTP\bin\Debug\NorthWindOLTP.dll
+D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NorthWindOLTP\bin\Debug\NorthWindOLTP.pdb
+D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NorthWindOLTP\obj\Debug\NorthWindOLTP.sqlproj.AssemblyReference.cache
+D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NorthWindOLTP\obj\Debug\NorthWindOLTP.dll
+D:\DIPLOMADO\MODULO 2 PRACTICA\PRACTICA_1\NorthWindOLTP\obj\Debug\NorthWindOLTP.pdb

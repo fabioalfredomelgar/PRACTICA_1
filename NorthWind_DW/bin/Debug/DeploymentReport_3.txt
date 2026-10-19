@@ -1,0 +1,62 @@
+﻿** Aspectos destacados
+     Tablas que se volverán a crear con los datos migrados
+       Ninguno
+     Índices clúster que se van a quitar
+       Ninguno
+     Índices clúster que se van a crear
+       Ninguno
+     Posibles incidencias de datos
+       Ninguno
+
+** Acciones del usuario
+     Crear
+       [staging] (Esquema)
+       [staging].[shipper] (Tabla)
+       [staging].[product] (Tabla)
+       [staging].[orders] (Tabla)
+       [staging].[employee] (Tabla)
+       [staging].[customer] (Tabla)
+       [dbo].[DimCustomer] (Tabla)
+       [dbo].[DimDate] (Tabla)
+       [dbo].[DimEmployee] (Tabla)
+       [dbo].[DimProduct] (Tabla)
+       [dbo].[DimShipLocation] (Tabla)
+       [dbo].[DimShipper] (Tabla)
+       [dbo].[FactSales] (Tabla)
+       [dbo].[PackageConfig] (Tabla)
+       [dbo].[DF_DimCustomer_LoadDate] (Restricción DEFAULT)
+       [dbo].[DF_DimDate_IsWeekend] (Restricción DEFAULT)
+       [dbo].[DF_DimEmployee_LoadDate] (Restricción DEFAULT)
+       [dbo].[DF_DimProduct_Discontinued] (Restricción DEFAULT)
+       [dbo].[DF_DimProduct_LoadDate] (Restricción DEFAULT)
+       [dbo].[DF_DimShipLocation_City] (Restricción DEFAULT)
+       [dbo].[DF_DimShipLocation_Region] (Restricción DEFAULT)
+       [dbo].[DF_DimShipLocation_Country] (Restricción DEFAULT)
+       [dbo].[DF_DimShipLocation_Postal] (Restricción DEFAULT)
+       [dbo].[DF_DimShipLocation_LoadDate] (Restricción DEFAULT)
+       [dbo].[DF_DimShipper_LoadDate] (Restricción DEFAULT)
+       [dbo].[DF_FactSales_Discount] (Restricción DEFAULT)
+       [dbo].[DF_FactSales_AllocatedFreight] (Restricción DEFAULT)
+       [dbo].[DF_FactSales_LoadDate] (Restricción DEFAULT)
+       [dbo].[DF_PackageConfig_LastRowVersion] (Restricción DEFAULT)
+       [dbo].[FK_FactSales_Customer] (Clave externa)
+       [dbo].[FK_FactSales_Employee] (Clave externa)
+       [dbo].[FK_FactSales_OrderDate] (Clave externa)
+       [dbo].[FK_FactSales_Product] (Clave externa)
+       [dbo].[FK_FactSales_RequiredDate] (Clave externa)
+       [dbo].[FK_FactSales_ShipLocation] (Clave externa)
+       [dbo].[FK_FactSales_ShippedDate] (Clave externa)
+       [dbo].[FK_FactSales_Shipper] (Clave externa)
+       [dbo].[CK_FactSales_Discount] (Restricción CHECK)
+       [dbo].[CK_FactSales_Freight] (Restricción CHECK)
+       [dbo].[CK_FactSales_Price] (Restricción CHECK)
+       [dbo].[CK_FactSales_Quantity] (Restricción CHECK)
+       [dbo].[DW_MergeDimCustomer] (Procedimiento)
+       [dbo].[DW_MergeDimEmployee] (Procedimiento)
+       [dbo].[DW_MergeDimProduct] (Procedimiento)
+       [dbo].[DW_MergeDimShipper] (Procedimiento)
+       [dbo].[DW_MergeFactSales] (Procedimiento)
+       [dbo].[GetLastPackageRowVersion] (Procedimiento)
+       [dbo].[UpdateLastPackageRowVersion] (Procedimiento)
+
+** Acciones de compatibilidad

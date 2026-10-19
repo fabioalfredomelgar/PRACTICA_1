@@ -1,0 +1,1600 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/17/2026 2:26:16 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SKYNET"
+  DTS:CreatorName="SKYNET\Kevin"
+  DTS:DTSID="{ACE07164-C46F-4F6C-896D-031C273D3F0E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="DimEmployee"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{4A10B366-629B-41E2-92C2-9E5D32BC7A1E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Source.NorthWindOLTP]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{67AEF95F-5743-483A-AEC6-008BE6AD7F67}"
+      DTS:ObjectName="Source.NorthWindOLTP">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=KIM;Initial Catalog=NorthWindOLTP;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-DimEmployee-{67AEF95F-5743-483A-AEC6-008BE6AD7F67}Skynet.NorthWindOLTP;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Target.NorthWind_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3D34E664-D9C5-4F54-AAF2-E2E63FA7DD56}"
+      DTS:ObjectName="Target.NorthWind_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=KIM;Initial Catalog=NorthWindDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-DimEmployee-{3D34E664-D9C5-4F54-AAF2-E2E63FA7DD56}Skynet.NorthWind_DW;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6139E121-4A36-4CB3-BF7F-680FA91905D6}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dbts">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{37BA50A2-6F01-4D42-9C63-2C03D3F518BE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="lasRowVersion">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Get Database DBTS"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{77CD0AF2-82EF-4AD4-BE19-2B8BC8CB7298}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get Database DBTS"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{67AEF95F-5743-483A-AEC6-008BE6AD7F67}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[GetDatabaseRowVersion] "
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="DBTS"
+            SQLTask:DtsVariableName="User::dbts" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get Table RowVersion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{5EF3E1CE-F69B-4FFC-97CB-59F941DA8CC3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get Table RowVersion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3D34E664-D9C5-4F54-AAF2-E2E63FA7DD56}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[GetLastPackageRowVersion] @tableName = 'Employees'"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="LastRowVersion"
+            SQLTask:DtsVariableName="User::lasRowVersion" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Employees"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{CAB3E912-B0F6-4FD7-B076-F379C25DABDB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Employees"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Employees\Búsqueda"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="Búsqueda"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimEmployee]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimEmployee]) [refTable]
+where [refTable].[EmployeeID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="EmployeeKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EmployeeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastName" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FirstName" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FullName" dataType="DT_WSTR" length="41" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Title" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TitleOfCourtesy" dataType="DT_WSTR" length="25" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="BirthDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HireDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="City" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Region" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Country" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ReportsTo" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupervisorName" dataType="DT_WSTR" length="41" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LoadDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap">#{Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[EmployeeID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Employees\Búsqueda.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.NorthWind_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.NorthWind_DW]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Employees\Búsqueda.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Employees\Búsqueda.Inputs[Entrada de búsqueda].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[EmployeeID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">EmployeeID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Employees\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\Load Employees\Búsqueda.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Employees\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[EmployeeKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\Load Employees\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[EmployeeKey]"
+                      name="EmployeeKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">EmployeeKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Employees\Búsqueda.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\Load Employees\Búsqueda.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Employees\Búsqueda.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\Load Employees\Búsqueda.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Employees\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Employees\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Employees\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Employees\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Employees\Get Rows from Employee"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Get Rows from Employee"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXECUTE [dbo].[GetEmployeeChangesByRowVersion] @startRow = ?, @endRow = ?</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping">"@startRow:Input",{37BA50A2-6F01-4D42-9C63-2C03D3F518BE};"@endRow:Input",{6139E121-4A36-4CB3-BF7F-680FA91905D6};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Employees\Get Rows from Employee.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source.NorthWindOLTP]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source.NorthWindOLTP]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[EmployeeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[EmployeeID]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[LastName]"
+                      length="20"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[FirstName]"
+                      length="10"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[FullName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[FullName]"
+                      length="31"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[FullName]"
+                      name="FullName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[Title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[Title]"
+                      length="30"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[Title]"
+                      name="Title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[TitleOfCourtesy]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[TitleOfCourtesy]"
+                      length="25"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[TitleOfCourtesy]"
+                      name="TitleOfCourtesy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[BirthDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[BirthDate]"
+                      length="10"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[BirthDate]"
+                      name="BirthDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[HireDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[HireDate]"
+                      length="10"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[HireDate]"
+                      name="HireDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[City]"
+                      length="15"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[Region]"
+                      length="15"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[Region]"
+                      name="Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[Country]"
+                      length="15"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[ReportsTo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[ReportsTo]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[ReportsTo]"
+                      name="ReportsTo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[SupervisorName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[SupervisorName]"
+                      length="31"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[SupervisorName]"
+                      name="SupervisorName"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="10"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="31"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[TitleOfCourtesy]"
+                      dataType="wstr"
+                      length="25"
+                      name="TitleOfCourtesy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[BirthDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[HireDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[ReportsTo]"
+                      dataType="i4"
+                      name="ReportsTo" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].ExternalColumns[SupervisorName]"
+                      dataType="wstr"
+                      length="31"
+                      name="SupervisorName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[FirstName]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[FullName]"
+                      dataType="wstr"
+                      length="31"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[FullName]"
+                      name="FullName" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[TitleOfCourtesy]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[TitleOfCourtesy]"
+                      name="TitleOfCourtesy" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[BirthDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[BirthDate]"
+                      name="BirthDate" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[HireDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[HireDate]"
+                      name="HireDate" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[City]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[Region]"
+                      name="Region" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[ReportsTo]"
+                      dataType="i4"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[ReportsTo]"
+                      name="ReportsTo" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[SupervisorName]"
+                      dataType="wstr"
+                      length="31"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[SupervisorName]"
+                      name="SupervisorName" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Employees\Load Dim Employee"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Load Dim Employee"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[DimEmployee]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Employees\Load Dim Employee.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.NorthWind_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.NorthWind_DW]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[EmployeeID]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[LastName]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[FirstName]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].Columns[FullName]"
+                      cachedDataType="wstr"
+                      cachedLength="31"
+                      cachedName="FullName"
+                      externalMetadataColumnId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[FullName]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[FullName]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Title"
+                      externalMetadataColumnId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[Title]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[Title]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].Columns[TitleOfCourtesy]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="TitleOfCourtesy"
+                      externalMetadataColumnId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[TitleOfCourtesy]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[TitleOfCourtesy]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].Columns[BirthDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="BirthDate"
+                      externalMetadataColumnId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[BirthDate]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].Columns[HireDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="HireDate"
+                      externalMetadataColumnId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[HireDate]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[HireDate]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[City]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[City]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Region"
+                      externalMetadataColumnId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[Region]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[Country]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].Columns[ReportsTo]"
+                      cachedDataType="i4"
+                      cachedName="ReportsTo"
+                      externalMetadataColumnId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[ReportsTo]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[ReportsTo]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].Columns[SupervisorName]"
+                      cachedDataType="wstr"
+                      cachedLength="31"
+                      cachedName="SupervisorName"
+                      externalMetadataColumnId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupervisorName]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[SupervisorName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[EmployeeKey]"
+                      dataType="i4"
+                      name="EmployeeKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="20"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="41"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[TitleOfCourtesy]"
+                      dataType="wstr"
+                      length="25"
+                      name="TitleOfCourtesy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[BirthDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[HireDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[ReportsTo]"
+                      dataType="i4"
+                      name="ReportsTo" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupervisorName]"
+                      dataType="wstr"
+                      length="41"
+                      name="SupervisorName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB].ExternalColumns[LoadDate]"
+                      dataType="dbTimeStamp"
+                      name="LoadDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Employees\Load Dim Employee.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Employees\Load Dim Employee.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Employees\Load Dim Employee.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Employees\Load Dim Employee.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Employees\Load Dim Employee.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Employees\Load staging"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Load staging"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[staging].[employee]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Employees\Load staging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.NorthWind_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.NorthWind_DW]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[EmployeeID]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[LastName]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[FirstName]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].Columns[FullName]"
+                      cachedDataType="wstr"
+                      cachedLength="31"
+                      cachedName="FullName"
+                      externalMetadataColumnId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[FullName]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[FullName]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Title"
+                      externalMetadataColumnId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Title]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[Title]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].Columns[TitleOfCourtesy]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="TitleOfCourtesy"
+                      externalMetadataColumnId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[TitleOfCourtesy]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[TitleOfCourtesy]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].Columns[BirthDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="BirthDate"
+                      externalMetadataColumnId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[BirthDate]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].Columns[HireDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="HireDate"
+                      externalMetadataColumnId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[HireDate]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[HireDate]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[City]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[City]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Region"
+                      externalMetadataColumnId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Region]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Country]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].Columns[ReportsTo]"
+                      cachedDataType="i4"
+                      cachedName="ReportsTo"
+                      externalMetadataColumnId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ReportsTo]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[ReportsTo]" />
+                    <inputColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].Columns[SupervisorName]"
+                      cachedDataType="wstr"
+                      cachedLength="31"
+                      cachedName="SupervisorName"
+                      externalMetadataColumnId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupervisorName]"
+                      lineageId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB].Columns[SupervisorName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="20"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="41"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[TitleOfCourtesy]"
+                      dataType="wstr"
+                      length="25"
+                      name="TitleOfCourtesy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[BirthDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[HireDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ReportsTo]"
+                      dataType="i4"
+                      name="ReportsTo" />
+                    <externalMetadataColumn
+                      refId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupervisorName]"
+                      dataType="wstr"
+                      length="41"
+                      name="SupervisorName" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Employees\Load staging.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Employees\Load staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Employees\Load staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Employees\Load staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Employees\Load staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Employees.Paths[Salida de entradas coincidentes de búsqueda]"
+              endId="Package\Load Employees\Load staging.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\Load Employees\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\Load Employees.Paths[Salida de entradas no coincidentes de búsqueda]"
+              endId="Package\Load Employees\Load Dim Employee.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de entradas no coincidentes de búsqueda"
+              startId="Package\Load Employees\Búsqueda.Outputs[Salida de entradas no coincidentes de búsqueda]" />
+            <path
+              refId="Package\Load Employees.Paths[Salida de origen de OLE DB]"
+              endId="Package\Load Employees\Búsqueda.Inputs[Entrada de búsqueda]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Load Employees\Get Rows from Employee.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Staging clean up"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{742CE9FF-18B2-4E8B-AE3C-5F0634505F19}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Staging clean up"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3D34E664-D9C5-4F54-AAF2-E2E63FA7DD56}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE staging.employee" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sync Dim Employee"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{20BAB46E-D996-494B-96BD-A92F26A13629}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sync Dim Employee"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3D34E664-D9C5-4F54-AAF2-E2E63FA7DD56}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[DW_MergeDimEmployee] " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update package config"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{B3877B4D-2922-4443-9B4B-E79143D1216A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update package config"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3D34E664-D9C5-4F54-AAF2-E2E63FA7DD56}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] @tableName = 'Employees' ,@lastRowVersion = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::dbts"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{BB6EE9EC-3730-4D1F-A43C-10C44D01AF74}"
+      DTS:From="Package\Get Database DBTS"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Get Table RowVersion" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{5CDA006B-FF6C-415E-8561-463BD57EB9A0}"
+      DTS:From="Package\Get Table RowVersion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\Staging clean up" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{9769801E-6935-4756-87FC-AA9F3B7880D0}"
+      DTS:From="Package\Staging clean up"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 2"
+      DTS:To="Package\Load Employees" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{97D34057-D7FC-4C57-B1A7-E27ED398E113}"
+      DTS:From="Package\Load Employees"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 3"
+      DTS:To="Package\Sync Dim Employee" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{F5F6FFB1-1741-4D00-9846-FC615A126CA3}"
+      DTS:From="Package\Sync Dim Employee"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 4"
+      DTS:To="Package\Update package config" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Get Database DBTS"
+          TopLeft="390.833311979142,39.8666663894389" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Get Table RowVersion"
+          TopLeft="379.166645949914,103.999999276797" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Load Employees"
+          TopLeft="393.333311842548,237.466665015353" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Staging clean up"
+          TopLeft="394.999978418152,168.133332164155" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Sync Dim Employee"
+          TopLeft="389.166645403539,301.599997902711" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Update package config"
+          TopLeft="382.499979101122,367.466664111349" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="473.999978964528,81.4666663894389">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,22.5333328873581"
+              Start="0,0"
+              End="0,15.0333328873581">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.0333328873581" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="471.883312184033,145.599999276797">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,22.5333328873583"
+              Start="0,0"
+              End="0,15.0333328873583">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.0333328873583" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="472.16664513035,209.733332164155">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.7333328511981"
+              Start="0,0"
+              End="0,20.2333328511981">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2333328511981" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 3]"
+          TopLeft="473.249978623043,279.066665015353">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,22.533332887358"
+              Start="0,0"
+              End="0,15.033332887358">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.033332887358" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 4]"
+          TopLeft="475.03331225233,343.199997902711">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.266666208638"
+              Start="0,0"
+              End="0,16.766666208638">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.766666208638" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Employees">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="196.8,41.6"
+          Id="Package\Load Employees\Get Rows from Employee"
+          TopLeft="282.499984564881,44.1999996926387" />
+        <NodeLayout
+          Size="125.6,41.6"
+          Id="Package\Load Employees\Búsqueda"
+          TopLeft="317.499982652566,131.733332417276" />
+        <EdgeLayout
+          Id="Package\Load Employees.Paths[Salida de origen de OLE DB]"
+          TopLeft="380.599983608723,85.7999996926387">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.9333327246375"
+              Start="0,0"
+              End="0,38.4333327246375">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.4333327246375" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="137.6,41.6"
+          Id="Package\Load Employees\Load staging"
+          TopLeft="89.1666617948148,241.799998318553" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\Load Employees\Load Dim Employee"
+          TopLeft="542.499970359108,246.999998282393" />
+        <EdgeLayout
+          Id="Package\Load Employees.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="360.699982652566,173.333332417276">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-202.733320857751,68.4666659012768"
+              Start="0,0"
+              End="-202.733320857751,60.9666659012768">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.9033959144826" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.9033959144826"
+                    Point2="0,27.9033959144826"
+                    Point3="-4,27.9033959144826" />
+                  <mssgle:LineSegment
+                    End="-198.733320857751,27.9033959144826" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-198.733320857751,27.9033959144826"
+                    Point2="-202.733320857751,27.9033959144826"
+                    Point3="-202.733320857751,31.9033959144826" />
+                  <mssgle:LineSegment
+                    End="-202.733320857751,60.9666659012768" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-201.185683866375,32.9033959144826,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Employees.Paths[Salida de entradas no coincidentes de búsqueda]"
+          TopLeft="399.899982652566,173.333332417276">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="228.599987706543,73.6666658651168"
+              Start="0,0"
+              End="228.599987706543,66.1666658651168">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.0226411827646" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.0226411827646"
+                    Point2="0,30.0226411827646"
+                    Point3="4,30.0226411827646" />
+                  <mssgle:LineSegment
+                    End="224.599987706543,30.0226411827646" />
+                  <mssgle:CubicBezierSegment
+                    Point1="224.599987706543,30.0226411827646"
+                    Point2="228.599987706543,30.0226411827646"
+                    Point3="228.599987706543,34.0226411827646" />
+                  <mssgle:LineSegment
+                    End="228.599987706543,66.1666658651168" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="7.41097041577147,35.0226411827646,213.778046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Employees\Get Rows from Employee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Employees\Load Dim Employee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Employees\Búsqueda">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimEmployee]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Employees\Load staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
