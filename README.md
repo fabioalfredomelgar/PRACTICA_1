@@ -1,4 +1,4 @@
-# NorthWind — Proyecto OLTP y Data Warehouse
+# NorthWind — Proyecto OLTP , Data Warehouse , ETL 
 
 **Diplomado en Ciencia de Datos — UMSS FCyT** Módulo II — Almacenamiento y Preparación de Datos  
 **Docente:** M.Sc. Juan Marcelo Claure Salinas
@@ -19,3 +19,4 @@
 
 * 📁 **`NorthWindDW/`**: Implementación del Data Warehouse y vistas de reporte.
 * 📁 **`NorthWindOLTP/`**: Base de datos transaccional y scripts de configuración.
+* 📁 **`NorthWindETL/`**: 
