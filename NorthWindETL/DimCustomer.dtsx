@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="DimCustomer"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{D6EE8951-CF79-4C1F-8D5A-5DC3AF5DA9D2}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{B2814854-2FE2-4C5C-9425-1991AC39B095}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,7 +25,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=Skynet;Initial Catalog=NorthWindOLTP;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-DimCustomer-{0D723E43-B54B-4F10-878C-2D87AD47C552}Skynet.NorthWindOLTP;" />
+          DTS:ConnectionString="Data Source=KIM;Initial Catalog=NorthWindOLTP;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-DimCustomer-{0D723E43-B54B-4F10-878C-2D87AD47C552}Skynet.NorthWindOLTP;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -1210,27 +1210,27 @@ where [refTable].[CustomerID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="172.8,41.6"
+          Size="173,42"
           Id="Package\Get Database DBTS"
           TopLeft="267.499985384445,44.1999996926387" />
         <NodeLayout
-          Size="183.2,41.6"
+          Size="183,42"
           Id="Package\Get Table RowVersion"
           TopLeft="265.833318808841,110.066665901277" />
         <NodeLayout
-          Size="149.6,41.6"
+          Size="150,42"
           Id="Package\Load Customer"
           TopLeft="277.499984838069,246.133331621753" />
         <NodeLayout
-          Size="141.6,41.6"
+          Size="142,42"
           Id="Package\Staging clean"
           TopLeft="287.499984291693,181.133332073755" />
         <NodeLayout
-          Size="170.4,41.6"
+          Size="170,42"
           Id="Package\Sync Dim Customer"
           TopLeft="277.499984838069,321.533331097431" />
         <NodeLayout
-          Size="170.4,41.6"
+          Size="170,42"
           Id="Package\Update Package config"
           TopLeft="285.416651072188,393.249997265389" />
         <EdgeLayout
